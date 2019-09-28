@@ -24,23 +24,16 @@ limitations under the License.
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
     <!-- Basic Information -->
 
-    <groupId>com.shaiksphere.funstuff.setGame</groupId>
+    <parent>
+        <groupId>com.shaiksphere.funstuff</groupId>
+        <artifactId>funstuff</artifactId>
+        <version>2.0.0</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
     <artifactId>set-game</artifactId>
     <version>1.0.3</version>
     <packaging>pom</packaging>
-
-    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-    <!-- Project Information -->
-
-    <organization>
-        <name>mindsmine</name>
-        <url>http://mindsmine.shaiksphere.com</url>
-    </organization>
-    <name>Set Game</name>
-    <description>Shaiksphere Inc.</description>
-    <url>http://www.shaiksphere.com</url>
 
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -51,44 +44,9 @@ limitations under the License.
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${dependency.version.junit}</version>
         </dependency>
     </dependencies>
-
-    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-    <!-- Properties -->
-
-    <properties>
-        <!-- Environment Properties -->
-        <maven.build.timestamp.format>yyyyMMdd.HHmmss</maven.build.timestamp.format>
-        <build.compiler>extJavac</build.compiler>
-
-        <!-- Local Properties -->
-        <path.to.src>src</path.to.src>
-        <path.to.test>test</path.to.test>
-
-        <path.to.build>build</path.to.build>
-
-        <path.to.dist>dist</path.to.dist>
-
-        <compile.debugLevel>lines,vars,source</compile.debugLevel>
-        <compile.noWarn>off</compile.noWarn>
-        <compile.deprecation>on</compile.deprecation>
-        <compile.args>-Xlint:unchecked</compile.args>
-
-        <build.source.code>${path.to.build}/source/code</build.source.code>
-        <build.source.compiled>${path.to.build}/source/compiled</build.source.compiled>
-
-        <build.test.code>${path.to.build}/test/code</build.test.code>
-        <build.test.compiled>${path.to.build}/test/compiled</build.test.compiled>
-        <build.test.lib>${path.to.build}/test/lib</build.test.lib>
-        <build.test.reports>${path.to.build}/test/reports</build.test.reports>
-
-        <output.code>${path.to.dist}</output.code>
-        <output.file>${project.organization.name}-${project.artifactId}-${project.version}.jar</output.file>
-    </properties>
 
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -100,42 +58,10 @@ limitations under the License.
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.0.0-M1</version>
-                <executions>
-                    <execution>
-                        <id>enforce</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <requireMavenVersion>
-                                    <version>(,3.6.0]</version>
-                                </requireMavenVersion>
-                                <requireJavaVersion>
-                                    <version>(,12]</version>
-                                </requireJavaVersion>
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.ant</groupId>
-                        <artifactId>ant-junit</artifactId>
-                        <version>1.9.7</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.apache.ant</groupId>
-                        <artifactId>ant-junit4</artifactId>
-                        <version>1.9.7</version>
-                    </dependency>
-                </dependencies>
                 <executions>
                     <execution>
                         <id>clean</id>
