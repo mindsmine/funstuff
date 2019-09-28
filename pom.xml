@@ -236,7 +236,7 @@ limitations under the License.
                         </goals>
                         <configuration>
                             <target>
-                                <echo level="info" message="Began - Compiling ${project.name} source code"/>
+                                <echo level="info" message="Began - Compiling ${project.name} ${project.artifactId} source code"/>
                                 <echo/>
                                 <javac debug="on"
                                        debuglevel="${compile.debugLevel}"
@@ -249,7 +249,7 @@ limitations under the License.
                                     <src location="${build.source.code}"/>
                                 </javac>
                                 <echo/>
-                                <echo level="info" message="Ended - Compiling ${project.name} source code"/>
+                                <echo level="info" message="Ended - Compiling ${project.name} ${project.artifactId} source code"/>
                                 <echo/>
                                 <echo/>
                             </target>
