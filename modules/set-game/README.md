@@ -1,7 +1,5 @@
 # set-game #
 
-[![Build Status](https://travis-ci.org/mindsmine/funstuff-set-game.svg?branch=master)](https://travis-ci.org/mindsmine/funstuff-set-game)
-
 A SET is three cards where each feature, when looked at individually, is either all the same OR all different. Each card
 contains four features: colour (red, purple or green), shape (oval, squiggle or diamond), number (one, two or three) and
 shading (solid, striped or outlined).

@@ -1,7 +1,5 @@
 # funstuff-example-opennlp #
 
-[![Build Status](https://travis-ci.org/mindsmine/funstuff-example-opennlp.svg?branch=master)](https://travis-ci.org/mindsmine/funstuff-example-opennlp)
-
 ## Apache OpenNLP ##
 
 The [Apache OpenNLP](https://opennlp.apache.org) library is a machine learning based toolkit for the processing of
