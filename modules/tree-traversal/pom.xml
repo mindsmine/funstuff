@@ -38,69 +38,9 @@ limitations under the License.
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-    <!-- Dependencies -->
+    <!-- Properties -->
 
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${dependency.version.junit}</version>
-        </dependency>
-    </dependencies>
-
-    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-    <!-- Plugins -->
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>package</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <echo level="info" message="Began - Generating ${output.file}"/>
-                                <echo/>
-                                <jar destfile="${output.code}/${output.file}"
-                                     basedir="${build.source.compiled}"
-                                     includes="**/*.class"
-                                     compress="true">
-                                    <manifest>
-                                        <attribute name="Built-By" value="${project.description}"/>
-                                        <attribute name="Implementation-Title" value="${project.name}"/>
-                                        <attribute name="Implementation-Version" value="${maven.build.timestamp}"/>
-                                        <attribute name="Implementation-Vendor" value="${project.description}"/>
-                                        <attribute name="Specification-Title" value="${project.name}"/>
-                                        <attribute name="Specification-Version" value="${maven.build.timestamp}"/>
-                                        <attribute name="Specification-Vendor" value="${project.description}"/>
-                                        <attribute name="Main-Class" value="com.shaiksphere.funstuff.treeTraversal.MainClass"/>
-                                    </manifest>
-                                </jar>
-                                <echo/>
-                                <echo level="info" message="Ended - Generating ${output.file}"/>
-                                <echo/>
-                                <echo level="info" message="Began - Cleaning unwanted files"/>
-                                <echo/>
-                                <delete dir="${path.to.build}"/>
-                                <echo/>
-                                <echo level="info" message="Ended - Cleaning unwanted files"/>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+    <properties>
+        <jar.manifest.mainClass>com.shaiksphere.funstuff.treeTraversal.MainClass</jar.manifest.mainClass>
+    </properties>
 </project>
