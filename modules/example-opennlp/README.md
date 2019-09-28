@@ -23,7 +23,7 @@ consideration, which is a natural language processing (NLP) problem.
 
 ## Developer Instructions ##
 
-[Refer to instructions here](../../../funstuff#developer-instructions).
+[Refer to instructions here](../../README.md#developer-instructions).
 
 ---
 

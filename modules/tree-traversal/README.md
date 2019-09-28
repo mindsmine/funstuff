@@ -9,7 +9,7 @@ described for a binary tree, but they may be generalized to other trees as well.
 
 ## Developer Instructions ##
 
-[Refer to instructions here](../../../funstuff#developer-instructions).
+[Refer to instructions here](../../README.md#developer-instructions).
 
 ---
 

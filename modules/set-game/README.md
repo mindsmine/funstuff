@@ -8,7 +8,7 @@ shading (solid, striped or outlined).
 
 ## Developer Instructions ##
 
-[Refer to instructions here](../../../funstuff#developer-instructions).
+[Refer to instructions here](../../README.md#developer-instructions).
 
 ---
 
