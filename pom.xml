@@ -229,6 +229,33 @@ limitations under the License.
                         </configuration>
                     </execution>
                     <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <echo level="info" message="Began - Compiling ${project.name} source code"/>
+                                <echo/>
+                                <javac debug="on"
+                                       debuglevel="${compile.debugLevel}"
+                                       deprecation="${compile.deprecation}"
+                                       nowarn="${compile.noWarn}"
+                                       includeantruntime="false"
+                                       destdir="${build.source.compiled}">
+                                    <compilerarg value="${compile.args}"/>
+                                    <exclude name="**/package-info.java"/>
+                                    <src location="${build.source.code}"/>
+                                </javac>
+                                <echo/>
+                                <echo level="info" message="Ended - Compiling ${project.name} source code"/>
+                                <echo/>
+                                <echo/>
+                            </target>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>generate-test-sources</id>
                         <phase>generate-test-sources</phase>
                         <goals>
