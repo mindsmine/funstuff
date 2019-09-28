@@ -1,6 +1,10 @@
 language: java
 install: true
-script: cd modules/set-game && mvn clean package
+script:
+  - cd ${TRAVIS_BUILD_DIR}/modules/set-game
+  - mvn clean package
+  - cd ${TRAVIS_BUILD_DIR}/modules/example-opennlp
+  - mvn clean package
 
 jdk:
   - openjdk12
