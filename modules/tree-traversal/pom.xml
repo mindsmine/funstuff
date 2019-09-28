@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2008-present Shaiksphere, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Basic Information -->
+
+    <parent>
+        <groupId>com.shaiksphere.funstuff</groupId>
+        <artifactId>funstuff</artifactId>
+        <version>2.0.0</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>tree-traversal</artifactId>
+    <version>1.1.0</version>
+    <packaging>pom</packaging>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Dependencies -->
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${dependency.version.junit}</version>
+        </dependency>
+    </dependencies>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Plugins -->
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <echo level="info" message="Began - Compiling ${project.name} source code"/>
+                                <echo/>
+                                <javac debug="on"
+                                       debuglevel="${compile.debugLevel}"
+                                       deprecation="${compile.deprecation}"
+                                       nowarn="${compile.noWarn}"
+                                       includeantruntime="false"
+                                       destdir="${build.source.compiled}">
+                                    <compilerarg value="${compile.args}"/>
+                                    <exclude name="**/package-info.java"/>
+                                    <src location="${build.source.code}"/>
+                                </javac>
+                                <echo/>
+                                <echo level="info" message="Ended - Compiling ${project.name} source code"/>
+                                <echo/>
+                                <echo/>
+                            </target>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <echo level="info" message="Began - Testing ${project.name} code"/>
+                                <echo/>
+                                <junit printsummary="yes" haltonfailure="yes">
+                                    <formatter type="plain"/>
+                                    <classpath>
+                                        <fileset dir="${build.test.lib}" includes="*.jar"/>
+                                        <pathelement location="${build.source.compiled}"/>
+                                        <pathelement location="${build.test.compiled}"/>
+                                    </classpath>
+                                    <batchtest fork="yes" todir="${build.test.reports}">
+                                        <fileset dir="${build.test.code}">
+                                            <include name="**/*Test*.java"/>
+                                        </fileset>
+                                    </batchtest>
+                                </junit>
+                                <echo/>
+                                <echo level="info" message="Ended - Testing ${project.name} code"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>package</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <echo level="info" message="Began - Generating ${output.file}"/>
+                                <echo/>
+                                <jar destfile="${output.code}/${output.file}"
+                                     basedir="${build.source.compiled}"
+                                     includes="**/*.class"
+                                     compress="true">
+                                    <manifest>
+                                        <attribute name="Built-By" value="${project.description}"/>
+                                        <attribute name="Implementation-Title" value="${project.name}"/>
+                                        <attribute name="Implementation-Version" value="${maven.build.timestamp}"/>
+                                        <attribute name="Implementation-Vendor" value="${project.description}"/>
+                                        <attribute name="Specification-Title" value="${project.name}"/>
+                                        <attribute name="Specification-Version" value="${maven.build.timestamp}"/>
+                                        <attribute name="Specification-Vendor" value="${project.description}"/>
+                                        <attribute name="Main-Class" value="com.shaiksphere.funstuff.treeTraversal.MainClass"/>
+                                    </manifest>
+                                </jar>
+                                <echo/>
+                                <echo level="info" message="Ended - Generating ${output.file}"/>
+                                <echo/>
+                                <echo level="info" message="Began - Cleaning unwanted files"/>
+                                <echo/>
+                                <delete dir="${path.to.build}"/>
+                                <echo/>
+                                <echo level="info" message="Ended - Cleaning unwanted files"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
