@@ -70,74 +70,6 @@ limitations under the License.
                 <artifactId>maven-antrun-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>clean</id>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <echo level="info" message="Began - Cleaning ${project.name}"/>
-                                <echo/>
-                                <delete dir="${path.to.build}"/>
-                                <delete dir="${path.to.dist}"/>
-                                <echo/>
-                                <echo level="info" message="Ended - Cleaning ${project.name}"/>
-                            </target>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>initialize</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <echo level="info" message="Began - Initialisation of ${project.name}"/>
-                                <echo/>
-                                <mkdir dir="${build.source.code}"/>
-                                <mkdir dir="${build.source.compiled}"/>
-                                <mkdir dir="${build.test.code}"/>
-                                <mkdir dir="${build.test.compiled}"/>
-                                <mkdir dir="${build.test.lib}"/>
-                                <mkdir dir="${build.test.reports}"/>
-                                <echo/>
-                                <echo level="info" message="Ended - Initialisation of ${project.name}"/>
-                            </target>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>generate-sources</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <tstamp>
-                                    <format property="IMPL_YEAR" pattern="yyyy"/>
-                                </tstamp>
-                                <echo level="info" message="Began - Copying ${project.name} source code"/>
-                                <echo/>
-                                <copy todir="${build.source.code}" encoding="ISO-8859-1" outputencoding="UTF-8">
-                                    <fileset dir="${path.to.src}"/>
-                                    <filterchain>
-                                        <replacetokens>
-                                            <token key="BUILD_TIMESTAMP" value="${maven.build.timestamp}"/>
-                                            <token key="BUILD_YEAR" value="${IMPL_YEAR}"/>
-                                            <token key="COMPANY_LINK" value="${project.url}"/>
-                                            <token key="PRODUCT_NAME" value="${project.name}"/>
-                                            <token key="PRODUCT_VERSION" value="${project.version}"/>
-                                        </replacetokens>
-                                    </filterchain>
-                                </copy>
-                                <echo/>
-                                <echo level="info" message="Ended - Copying ${project.name} source code"/>
-                            </target>
-                        </configuration>
-                    </execution>
-                    <execution>
                         <id>process-resources</id>
                         <phase>process-resources</phase>
                         <goals>
@@ -178,68 +110,6 @@ limitations under the License.
                                 <echo level="info" message="Ended - Compiling ${project.name} source code"/>
                                 <echo/>
                                 <echo/>
-                            </target>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>generate-test-sources</id>
-                        <phase>generate-test-sources</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <echo level="info" message="Began - Copying ${project.name} test code"/>
-                                <echo/>
-                                <copy todir="${build.test.code}">
-                                    <fileset dir="${path.to.test}"/>
-                                </copy>
-                                <echo/>
-                                <echo level="info" message="Ended - Copying ${project.name} test code"/>
-                            </target>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>process-test-resources</id>
-                        <phase>process-test-resources</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <copy todir="${build.test.lib}">
-                                    <fileset file="${org.hamcrest:hamcrest-core:jar}"/>
-                                    <fileset file="${junit:junit:jar}"/>
-                                </copy>
-                            </target>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>test-compile</id>
-                        <phase>test-compile</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <echo level="info" message="Began - Compiling ${project.name} test code"/>
-                                <echo/>
-                                <javac debug="on"
-                                       debuglevel="${compile.debugLevel}"
-                                       deprecation="${compile.deprecation}"
-                                       nowarn="${compile.noWarn}"
-                                       includeantruntime="false"
-                                       destdir="${build.test.compiled}">
-                                    <classpath>
-                                        <fileset dir="${build.test.lib}" includes="*.jar"/>
-                                        <pathelement location="${build.source.compiled}"/>
-                                    </classpath>
-                                    <compilerarg value="${compile.args}"/>
-                                    <exclude name="**/package-info.java"/>
-                                    <src location="${build.test.code}"/>
-                                </javac>
-                                <echo/>
-                                <echo level="info" message="Ended - Compiling ${project.name} test code"/>
                             </target>
                         </configuration>
                     </execution>
@@ -286,22 +156,6 @@ limitations under the License.
                                 </junit>
                                 <echo/>
                                 <echo level="info" message="Ended - Testing ${project.name} code"/>
-                            </target>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>prepare-package</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <echo level="info" message="Began - Preparing to package ${project.name}"/>
-                                <echo/>
-                                <mkdir dir="${output.code}"/>
-                                <echo/>
-                                <echo level="info" message="Ended - Preparing to package ${project.name}"/>
                             </target>
                         </configuration>
                     </execution>

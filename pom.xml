@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2008-present Shaiksphere, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Basic Information -->
+
+    <groupId>com.shaiksphere.funstuff</groupId>
+    <artifactId>funstuff</artifactId>
+    <version>2.0.0</version>
+    <packaging>pom</packaging>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Project Information -->
+
+    <organization>
+        <name>mindsmine</name>
+        <url>https://www.shaiksphere.com/mindsmine</url>
+    </organization>
+    <name>Fun Stuff</name>
+    <description>Shaiksphere Inc.</description>
+    <url>http://www.shaiksphere.com</url>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Dependencies -->
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${dependency.version.junit}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.opennlp</groupId>
+            <artifactId>opennlp-tools</artifactId>
+            <version>${dependency.version.opennlp.tools}</version>
+        </dependency>
+    </dependencies>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Properties -->
+
+    <properties>
+        <!-- Dependency Versions -->
+        <dependency.version.junit>4.12</dependency.version.junit>
+        <dependency.version.opennlp.tools>1.9.1</dependency.version.opennlp.tools>
+
+        <!-- Environment Properties -->
+        <maven.build.timestamp.format>yyyyMMdd.HHmmss</maven.build.timestamp.format>
+        <build.compiler>extJavac</build.compiler>
+
+        <!-- Local Properties -->
+        <path.to.src>src</path.to.src>
+        <path.to.test>test</path.to.test>
+
+        <path.to.build>build</path.to.build>
+
+        <path.to.dist>dist</path.to.dist>
+
+        <compile.debugLevel>lines,vars,source</compile.debugLevel>
+        <compile.noWarn>off</compile.noWarn>
+        <compile.deprecation>on</compile.deprecation>
+        <compile.args>-Xlint:unchecked</compile.args>
+
+        <build.source.code>${path.to.build}/source/code</build.source.code>
+        <build.source.compiled>${path.to.build}/source/compiled</build.source.compiled>
+        <build.source.lib>${path.to.build}/source/lib</build.source.lib>
+
+        <build.test.code>${path.to.build}/test/code</build.test.code>
+        <build.test.compiled>${path.to.build}/test/compiled</build.test.compiled>
+        <build.test.lib>${path.to.build}/test/lib</build.test.lib>
+        <build.test.reports>${path.to.build}/test/reports</build.test.reports>
+
+        <output.code>${path.to.dist}</output.code>
+        <output.file>${project.organization.name}-${project.artifactId}-${project.version}.jar</output.file>
+    </properties>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Plugins -->
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>3.0.0-M1</version>
+                    <executions>
+                        <execution>
+                            <id>enforce</id>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <requireMavenVersion>
+                                        <version>(,3.6.0]</version>
+                                    </requireMavenVersion>
+                                    <requireJavaVersion>
+                                        <version>(,12]</version>
+                                    </requireJavaVersion>
+                                </rules>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>1.8</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.ant</groupId>
+                            <artifactId>ant-junit</artifactId>
+                            <version>1.9.7</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.apache.ant</groupId>
+                            <artifactId>ant-junit4</artifactId>
+                            <version>1.9.7</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <echo level="info" message="Began - Cleaning ${project.name} ${project.artifactId}"/>
+                                <echo/>
+                                <delete dir="${path.to.build}"/>
+                                <delete dir="${path.to.dist}"/>
+                                <echo/>
+                                <echo level="info" message="Ended - Cleaning ${project.name} ${project.artifactId}"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>initialize</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <echo level="info" message="Began - Initialisation of ${project.name} ${project.artifactId}"/>
+                                <echo/>
+                                <mkdir dir="${build.source.code}"/>
+                                <mkdir dir="${build.source.compiled}"/>
+                                <mkdir dir="${build.test.code}"/>
+                                <mkdir dir="${build.test.compiled}"/>
+                                <mkdir dir="${build.test.lib}"/>
+                                <mkdir dir="${build.test.reports}"/>
+                                <echo/>
+                                <echo level="info" message="Ended - Initialisation of ${project.name} ${project.artifactId}"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <tstamp>
+                                    <format property="IMPL_YEAR" pattern="yyyy"/>
+                                </tstamp>
+                                <echo level="info" message="Began - Copying ${project.name} ${project.artifactId} source code"/>
+                                <echo/>
+                                <copy todir="${build.source.code}" encoding="ISO-8859-1" outputencoding="UTF-8">
+                                    <fileset dir="${path.to.src}"/>
+                                    <filterchain>
+                                        <replacetokens>
+                                            <token key="BUILD_TIMESTAMP" value="${maven.build.timestamp}"/>
+                                            <token key="BUILD_YEAR" value="${IMPL_YEAR}"/>
+                                            <token key="COMPANY_LINK" value="${project.url}"/>
+                                            <token key="PRODUCT_NAME" value="${project.name}"/>
+                                            <token key="PRODUCT_VERSION" value="${project.version}"/>
+                                        </replacetokens>
+                                    </filterchain>
+                                </copy>
+                                <echo/>
+                                <echo level="info" message="Ended - Copying ${project.name} ${project.artifactId} source code"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-test-sources</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <echo level="info" message="Began - Copying ${project.name} ${project.artifactId} test code"/>
+                                <echo/>
+                                <copy todir="${build.test.code}">
+                                    <fileset dir="${path.to.test}"/>
+                                </copy>
+                                <echo/>
+                                <echo level="info" message="Ended - Copying ${project.name} ${project.artifactId} test code"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>process-test-resources</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <copy todir="${build.test.lib}">
+                                    <fileset file="${org.hamcrest:hamcrest-core:jar}"/>
+                                    <fileset file="${junit:junit:jar}"/>
+                                </copy>
+                            </target>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <echo level="info" message="Began - Compiling ${project.name} ${project.artifactId} test code"/>
+                                <echo/>
+                                <javac debug="on"
+                                       debuglevel="${compile.debugLevel}"
+                                       deprecation="${compile.deprecation}"
+                                       nowarn="${compile.noWarn}"
+                                       includeantruntime="false"
+                                       destdir="${build.test.compiled}">
+                                    <classpath>
+                                        <fileset dir="${build.test.lib}" includes="*.jar"/>
+                                        <pathelement location="${build.source.compiled}"/>
+                                    </classpath>
+                                    <compilerarg value="${compile.args}"/>
+                                    <exclude name="**/package-info.java"/>
+                                    <src location="${build.test.code}"/>
+                                </javac>
+                                <echo/>
+                                <echo level="info" message="Ended - Compiling ${project.name} ${project.artifactId} test code"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>prepare-package</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <echo level="info" message="Began - Preparing to package ${project.name} ${project.artifactId}"/>
+                                <echo/>
+                                <mkdir dir="${output.code}"/>
+                                <echo/>
+                                <echo level="info" message="Ended - Preparing to package ${project.name} ${project.artifactId}"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
