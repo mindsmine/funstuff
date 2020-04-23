@@ -15,14 +15,14 @@ Collection of fun examples gathered over time.
 
 ### Pre-Requisites ###
 
-1. Java 12 SDK, [available here](https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html).
+1. Java JDK, [available here](https://www.oracle.com/java/technologies/javase-jdk14-downloads.html).
 2. Apache Maven, [available here](http://maven.apache.org/download.cgi).
 
 ### How To Build ###
 
 * Setup `JAVA_HOME`
 ```bash
-$ export JAVA_HOME="path/to/Java/12/SDK"
+$ export JAVA_HOME="path/to/Java/JDK"
 ```
 
 * Setup `MAVEN_HOME`
