@@ -18,12 +18,16 @@ shading (solid, striped or outlined).
 
 **Command Line Interface**: After packaging the `jar` file, run the command line, as follows:
 ```bash
-$ java -jar dist/mindsmine-set-game-1.0.3.jar
+$ java -jar dist/mindsmine-set-game-1.0.4.jar
 ```
 
 ---
 
 ### Releases ###
+
+**1.0.4**
+* Java 14 compliant
+* Maven 3.6.3 compliant
 
 **1.0.3**
 * Java 12 compliant
