@@ -125,7 +125,7 @@ limitations under the License.
                                         <version>(,3.6.3]</version>
                                     </requireMavenVersion>
                                     <requireJavaVersion>
-                                        <version>(,14)</version>
+                                        <version>(,15)</version>
                                     </requireJavaVersion>
                                 </rules>
                             </configuration>
