@@ -16,7 +16,7 @@ limitations under the License.
 
 package com.shaiksphere.funstuff.exampleOpenNLP.utility;
 
-import com.shaiksphere.funstuff.exampleOpenNLP.helper.StringHelper;
+import com.shaiksphere.mindsmine.jems.StringHelper;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;

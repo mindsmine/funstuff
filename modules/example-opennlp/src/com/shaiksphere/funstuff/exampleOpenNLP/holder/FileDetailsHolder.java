@@ -16,7 +16,7 @@ limitations under the License.
 
 package com.shaiksphere.funstuff.exampleOpenNLP.holder;
 
-import com.shaiksphere.funstuff.exampleOpenNLP.helper.StringHelper;
+import com.shaiksphere.mindsmine.jems.StringHelper;
 
 import java.io.File;
 

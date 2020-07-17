@@ -17,10 +17,11 @@ limitations under the License.
 package com.shaiksphere.funstuff.exampleOpenNLP;
 
 import com.shaiksphere.funstuff.exampleOpenNLP.helper.OpenNLPHelper;
-import com.shaiksphere.funstuff.exampleOpenNLP.helper.StringHelper;
 import com.shaiksphere.funstuff.exampleOpenNLP.holder.ConcordanceHolder;
 import com.shaiksphere.funstuff.exampleOpenNLP.holder.FileDetailsHolder;
 import com.shaiksphere.funstuff.exampleOpenNLP.utility.SwingUtility;
+
+import com.shaiksphere.mindsmine.jems.StringHelper;
 
 import java.io.BufferedWriter;
 import java.io.File;
