@@ -16,15 +16,20 @@ limitations under the License.
 
 package com.shaiksphere.funstuff.exampleOpenNLP;
 
-import com.shaiksphere.funstuff.exampleOpenNLP.helper.FilesHelper;
 import com.shaiksphere.funstuff.exampleOpenNLP.helper.OpenNLPHelper;
 import com.shaiksphere.funstuff.exampleOpenNLP.helper.StringHelper;
 import com.shaiksphere.funstuff.exampleOpenNLP.holder.ConcordanceHolder;
 import com.shaiksphere.funstuff.exampleOpenNLP.holder.FileDetailsHolder;
 import com.shaiksphere.funstuff.exampleOpenNLP.utility.SwingUtility;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import java.util.ArrayList;
 
@@ -90,6 +95,11 @@ public final class MainClass {
 
             ArrayList<String> outputLines = doActualWork(binaryFile, inputFile);
 
+            if (outputLines.isEmpty()) {
+                SwingUtility.showErrorDialog("Fatal Error", "There are no concordance lines.");
+                System.exit(-1);
+            }
+
             String outputFolderPath = SwingUtility.getFolderPath("Pick the folder to store the result");
 
             FileDetailsHolder fileDetailsHolder = new FileDetailsHolder(
@@ -98,11 +108,32 @@ public final class MainClass {
                     SwingUtility.TXT_EXTENSION_FILTER.getExtensions()[0]
             );
 
-            String outputFilepath = FilesHelper.writeFileContent(fileDetailsHolder, outputLines);
+            Path outputFilePath = Paths.get(fileDetailsHolder.toString());
+
+            int i = 1;
+            while (outputFilePath.toFile().exists()) {
+                // If the file already exists, create a new one by appending a number
+                fileDetailsHolder.setFileName(fileDetailsHolder.getFileName() + (i++));
+
+                outputFilePath = Paths.get(fileDetailsHolder.toString());
+            }
+
+            BufferedWriter bufferedWriter = Files.newBufferedWriter(
+                    outputFilePath,
+                    StandardCharsets.UTF_8
+            );
+
+            for (String outputLine : outputLines) {
+                bufferedWriter.write(outputLine);
+                bufferedWriter.newLine();
+            }
+
+            bufferedWriter.flush();
+            bufferedWriter.close();
 
             SwingUtility.showPlainDialog(
                     "Successfully performed the operation",
-                    "Output was stored to the file = " + outputFilepath
+                    "Output was stored to the file = " + outputFilePath.toFile().getCanonicalPath()
             );
 
         } catch (Exception e) {
@@ -179,7 +210,7 @@ public final class MainClass {
      *
      */
     private static ArrayList<String> doActualWork(File binaryFile, File inputFile) throws IOException {
-        String inputFileContent = FilesHelper.readFileContent(inputFile);
+        String inputFileContent = Files.readString(inputFile.toPath());
 
         if (StringHelper.isBlank(inputFileContent)) {
             throw new IOException("INVALID FILE: Input file is empty!");
