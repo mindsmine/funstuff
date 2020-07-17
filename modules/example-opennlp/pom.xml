@@ -57,6 +57,16 @@ limitations under the License.
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Properties -->
+
+    <properties>
+        <!-- Local Properties -->
+        <path.to.lib>lib</path.to.lib>
+    </properties>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
     <!-- Plugins -->
 
     <build>
@@ -79,6 +89,7 @@ limitations under the License.
                             <target>
                                 <copy todir="${build.source.lib}">
                                     <fileset file="${org.apache.opennlp:opennlp-tools:jar}"/>
+                                    <fileset dir="${path.to.lib}" includes="*.jar"/>
                                 </copy>
                             </target>
                         </configuration>
