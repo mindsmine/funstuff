@@ -47,12 +47,8 @@ public final class MainClass {
 
     public static void main(String [] args) {
         switch (args.length) {
-            case 0 -> {
-                swingImplementation();
-            }
-            case 2 -> {
-                cliImplementation(args);
-            }
+            case 0 -> swingImplementation();
+            case 2 -> cliImplementation(args);
             default -> {
                 System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
                 System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
