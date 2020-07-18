@@ -61,7 +61,7 @@ limitations under the License.
 
     <properties>
         <!-- Local Properties -->
-        <path.to.lib>lib</path.to.lib>
+        <path.to.lib>../../lib</path.to.lib>
     </properties>
 
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
