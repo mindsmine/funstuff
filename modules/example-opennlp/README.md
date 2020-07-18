@@ -53,7 +53,7 @@ $ java -jar dist/mindsmine-exampleOpenNLP-1.0.5.jar example/en-sent.bin example/
 ## Releases ##
 
 **1.0.5**
-* Added dependency to `mindsmine-jems`
+* Added dependency to `mindsmine-jems-4.0.0` and removed unnecessary code
 
 **1.0.4**
 * Upgraded to OpenNLP 1.9.2

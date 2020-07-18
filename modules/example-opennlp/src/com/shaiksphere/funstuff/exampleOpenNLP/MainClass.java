@@ -73,6 +73,11 @@ public final class MainClass {
         }
     }
 
+    private static void quitSystem() {
+        SwingHelper.showInformationDialog("Exiting the application!", "You chose to quit...");
+        System.exit(1);
+    }
+
     /**
      * Handles the GUI invocation of the application. Absorbs the failures accordingly.
      *
@@ -88,19 +93,13 @@ public final class MainClass {
                         "Pick the language specific training file (e.g., en-sent.bin file)",
                         SwingHelper.BIN_EXTENSION_FILTER
                 ).get();
-            } catch (NoSuchElementException e) {
-                SwingHelper.showInformationDialog("Exiting the application!", "You chose to quit...");
-                System.exit(1);
-            }
 
-            try {
                 inputFile = SwingHelper.pickFile(
                         "Pick the content file (e.g., .txt file)",
                         SwingHelper.TXT_EXTENSION_FILTER
                 ).get();
             } catch (NoSuchElementException e) {
-                SwingHelper.showInformationDialog("Exiting the application!", "You chose to quit...");
-                System.exit(1);
+                quitSystem();
             }
 
             ArrayList<String> outputLines = doActualWork(binaryFile, inputFile);
@@ -114,8 +113,7 @@ public final class MainClass {
             try {
                 outputFolderPath = SwingHelper.pickFolder("Pick the folder to store the result").get().getCanonicalPath();
             } catch (NoSuchElementException e) {
-                SwingHelper.showInformationDialog("Exiting the application!", "You chose to quit...");
-                System.exit(1);
+                quitSystem();
             }
 
             FileDetailsHolder fileDetailsHolder = new FileDetailsHolder(
