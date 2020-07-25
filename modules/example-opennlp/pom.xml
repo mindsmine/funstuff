@@ -32,7 +32,7 @@ limitations under the License.
     </parent>
 
     <artifactId>exampleOpenNLP</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <packaging>pom</packaging>
 
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -53,6 +53,16 @@ limitations under the License.
             <version>${dependency.version.opennlp.tools}</version>
         </dependency>
     </dependencies>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- Properties -->
+
+    <properties>
+        <!-- Local Properties -->
+        <path.to.lib>../../lib</path.to.lib>
+    </properties>
 
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -79,6 +89,7 @@ limitations under the License.
                             <target>
                                 <copy todir="${build.source.lib}">
                                     <fileset file="${org.apache.opennlp:opennlp-tools:jar}"/>
+                                    <fileset dir="${path.to.lib}" includes="*.jar"/>
                                 </copy>
                             </target>
                         </configuration>

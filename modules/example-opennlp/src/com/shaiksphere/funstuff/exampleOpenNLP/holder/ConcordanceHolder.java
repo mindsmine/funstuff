@@ -16,8 +16,6 @@ limitations under the License.
 
 package com.shaiksphere.funstuff.exampleOpenNLP.holder;
 
-import com.shaiksphere.funstuff.exampleOpenNLP.helper.StringHelper;
-
 import java.util.ArrayList;
 import java.util.TreeMap;
 
@@ -46,7 +44,10 @@ public final class ConcordanceHolder {
         TreeMap<String, ArrayList<Integer>> frequencyMap = new TreeMap<>();
 
         for (int i = 0; i < sentences.length; i++) {
-            String [] words = StringHelper.getWords(sentences[i]);
+            String [] words = sentences[i]
+                    .replaceAll("(\\B['\"]\\b)|(\\b['\"]\\B)", "")
+                    .toLowerCase()
+                    .split("[\\s[\\p{P}&&[^'.]]]+");
 
             for (String word : words) {
                 ArrayList<Integer> lineNumberList = frequencyMap.get(word);

@@ -16,17 +16,24 @@ limitations under the License.
 
 package com.shaiksphere.funstuff.exampleOpenNLP;
 
-import com.shaiksphere.funstuff.exampleOpenNLP.helper.FilesHelper;
 import com.shaiksphere.funstuff.exampleOpenNLP.helper.OpenNLPHelper;
-import com.shaiksphere.funstuff.exampleOpenNLP.helper.StringHelper;
 import com.shaiksphere.funstuff.exampleOpenNLP.holder.ConcordanceHolder;
 import com.shaiksphere.funstuff.exampleOpenNLP.holder.FileDetailsHolder;
-import com.shaiksphere.funstuff.exampleOpenNLP.utility.SwingUtility;
 
+import com.shaiksphere.mindsmine.jems.StringHelper;
+import com.shaiksphere.mindsmine.jems.SwingHelper;
+
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 /**
  * Main class that handles the Concordance related tasks
@@ -40,17 +47,9 @@ public final class MainClass {
 
     public static void main(String [] args) {
         switch (args.length) {
-            case 0: {
-                swingImplementation();
-
-                break;
-            }
-            case 2: {
-                cliImplementation(args);
-
-                break;
-            }
-            default: {
+            case 0 -> swingImplementation();
+            case 2 -> cliImplementation(args);
+            default -> {
                 System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
                 System.err.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
                 System.err.println();
@@ -70,6 +69,11 @@ public final class MainClass {
         }
     }
 
+    private static void quitSystem() {
+        SwingHelper.showInformationDialog("Exiting the application!", "You chose to quit...");
+        System.exit(1);
+    }
+
     /**
      * Handles the GUI invocation of the application. Absorbs the failures accordingly.
      *
@@ -78,35 +82,72 @@ public final class MainClass {
      */
     private static void swingImplementation() {
         try {
-            File binaryFile = SwingUtility.getFile(
-                    "Pick the language specific training file (e.g., en-sent.bin file)",
-                    SwingUtility.BIN_EXTENSION_FILTER
-            );
+            File binaryFile = null, inputFile = null;
 
-            File inputFile = SwingUtility.getFile(
-                    "Pick the content file (e.g., .txt file)",
-                    SwingUtility.TXT_EXTENSION_FILTER
-            );
+            try {
+                binaryFile = SwingHelper.pickFile(
+                        "Pick the language specific training file (e.g., en-sent.bin file)",
+                        SwingHelper.BIN_EXTENSION_FILTER
+                ).get();
+
+                inputFile = SwingHelper.pickFile(
+                        "Pick the content file (e.g., .txt file)",
+                        SwingHelper.TXT_EXTENSION_FILTER
+                ).get();
+            } catch (NoSuchElementException e) {
+                quitSystem();
+            }
 
             ArrayList<String> outputLines = doActualWork(binaryFile, inputFile);
 
-            String outputFolderPath = SwingUtility.getFolderPath("Pick the folder to store the result");
+            if (outputLines.isEmpty()) {
+                SwingHelper.showErrorDialog("Fatal Error", "There are no concordance lines.");
+                System.exit(-1);
+            }
+
+            String outputFolderPath = null;
+            try {
+                outputFolderPath = SwingHelper.pickFolder("Pick the folder to store the result").get().getCanonicalPath();
+            } catch (NoSuchElementException e) {
+                quitSystem();
+            }
 
             FileDetailsHolder fileDetailsHolder = new FileDetailsHolder(
                     outputFolderPath,
                     "ConcordanceOutput",
-                    SwingUtility.TXT_EXTENSION_FILTER.getExtensions()[0]
+                    SwingHelper.TXT_EXTENSION_FILTER.getExtensions()[0]
             );
 
-            String outputFilepath = FilesHelper.writeFileContent(fileDetailsHolder, outputLines);
+            Path outputFilePath = Paths.get(fileDetailsHolder.toString());
 
-            SwingUtility.showPlainDialog(
+            int i = 1;
+            while (outputFilePath.toFile().exists()) {
+                // If the file already exists, create a new one by appending a number
+                fileDetailsHolder.setFileName(fileDetailsHolder.getFileName() + (i++));
+
+                outputFilePath = Paths.get(fileDetailsHolder.toString());
+            }
+
+            BufferedWriter bufferedWriter = Files.newBufferedWriter(
+                    outputFilePath,
+                    StandardCharsets.UTF_8
+            );
+
+            for (String outputLine : outputLines) {
+                bufferedWriter.write(outputLine);
+                bufferedWriter.newLine();
+            }
+
+            bufferedWriter.flush();
+            bufferedWriter.close();
+
+            SwingHelper.showPlainDialog(
                     "Successfully performed the operation",
-                    "Output was stored to the file = " + outputFilepath
+                    "Output was stored to the file = " + outputFilePath.toFile().getCanonicalPath()
             );
 
         } catch (Exception e) {
-            SwingUtility.showErrorDialog(e.getClass().getSimpleName(), e.getMessage());
+            SwingHelper.showErrorDialog(e.getClass().getSimpleName(), e.getMessage());
             System.exit(-1);
         }
     }
@@ -179,7 +220,7 @@ public final class MainClass {
      *
      */
     private static ArrayList<String> doActualWork(File binaryFile, File inputFile) throws IOException {
-        String inputFileContent = FilesHelper.readFileContent(inputFile);
+        String inputFileContent = Files.readString(inputFile.toPath());
 
         if (StringHelper.isBlank(inputFileContent)) {
             throw new IOException("INVALID FILE: Input file is empty!");
