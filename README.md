@@ -15,7 +15,7 @@ Collection of fun examples gathered over time.
 
 ### Pre-Requisites ###
 
-1. Java JDK, [available here](https://www.oracle.com/java/technologies/javase-jdk14-downloads.html).
+1. Java JDK, [available here](https://www.oracle.com/java/technologies/javase-jdk15-downloads.html).
 2. Apache Maven, [available here](http://maven.apache.org/download.cgi).
 
 ### How To Build ###
