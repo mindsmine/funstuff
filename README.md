@@ -8,6 +8,7 @@ Collection of fun examples gathered over time.
 1. [Concordance](modules/example-opennlp)
 2. [Set Game](modules/set-game)
 3. [Tree Traversal](modules/tree-traversal)
+4. [Browser](modules/browser)
 
 ---
 
