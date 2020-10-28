@@ -8,6 +8,7 @@ Collection of fun examples gathered over time.
 1. [Concordance](modules/example-opennlp)
 2. [Set Game](modules/set-game)
 3. [Tree Traversal](modules/tree-traversal)
+4. [Browser](modules/browser)
 
 ---
 
@@ -15,7 +16,7 @@ Collection of fun examples gathered over time.
 
 ### Pre-Requisites ###
 
-1. Java JDK, [available here](https://www.oracle.com/java/technologies/javase-jdk14-downloads.html).
+1. Java JDK, [available here](https://www.oracle.com/java/technologies/javase-jdk15-downloads.html).
 2. Apache Maven, [available here](http://maven.apache.org/download.cgi).
 
 ### How To Build ###

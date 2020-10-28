@@ -68,7 +68,7 @@ limitations under the License.
 
     <properties>
         <!-- Dependency Versions -->
-        <dependency.version.junit>4.13</dependency.version.junit>
+        <dependency.version.junit>4.13.1</dependency.version.junit>
         <dependency.version.opennlp.tools>1.9.2</dependency.version.opennlp.tools>
 
         <!-- Environment Properties -->
@@ -125,7 +125,7 @@ limitations under the License.
                                         <version>(,3.6.3]</version>
                                     </requireMavenVersion>
                                     <requireJavaVersion>
-                                        <version>(,15)</version>
+                                        <version>(,16)</version>
                                     </requireJavaVersion>
                                 </rules>
                             </configuration>
