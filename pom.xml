@@ -68,7 +68,7 @@ limitations under the License.
 
     <properties>
         <!-- Dependency Versions -->
-        <dependency.version.junit>4.13.1</dependency.version.junit>
+        <dependency.version.junit>4.13.2</dependency.version.junit>
         <dependency.version.opennlp.tools>1.9.2</dependency.version.opennlp.tools>
 
         <!-- Environment Properties -->
