@@ -1,6 +1,6 @@
 language: java
 
-install: true
+# install: true
 
 before_install:
   - echo "Downloading Maven"
@@ -24,8 +24,6 @@ script:
 
 jdk:
   - openjdk16
-
-sudo: false
 
 notifications:
   email:
