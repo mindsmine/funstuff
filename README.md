@@ -1,5 +1,7 @@
 # funstuff #
 
+[![Build Status](https://circleci.com/gh/mindsmine/funstuff.svg?style=shield)](https://circleci.com/gh/mindsmine/funstuff)
+
 [![Build Status](https://travis-ci.org/mindsmine/funstuff.svg?branch=master)](https://travis-ci.org/mindsmine/funstuff)
 
 Collection of fun examples gathered over time.
