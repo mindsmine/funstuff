@@ -15,7 +15,7 @@ jobs:
             cd modules/set-game
             mvn clean package
 
-  Example Opennlp:
+  Concordance:
     docker:
       - image: cimg/openjdk:16.0
     steps:
@@ -60,7 +60,7 @@ workflows:
   # For more details on extending your workflow, see the configuration docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
   sample: 
     jobs:
+      - Concordance
       - Set Game
-      - Example Opennlp
       - Tree Traversal
       - Browser
