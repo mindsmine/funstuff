@@ -11,7 +11,7 @@ jobs:
     executor: reusable-executor
     parameters:
       wd:
-        description: "To pass in the working directory"
+        description: "Working Directory"
         type: string
     steps:
       - checkout
