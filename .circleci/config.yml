@@ -16,8 +16,10 @@ jobs:
       - checkout
       # Use mvn clean and package as the standard maven build phase
       - run:
-          name: Package
+          name: Set Game
           command: |
+            pwd
+            ls -al
             cd ${CIRCLE_WORKING_DIRECTORY}/modules/set-game
             mvn clean package
 
