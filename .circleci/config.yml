@@ -3,50 +3,50 @@
 version: 2.1
 
 jobs:
-  set-game:
+  Set Game:
     docker:
       - image: cimg/openjdk:16.0
     steps:
       # Checkout the code as the first step.
       - checkout
       - run:
-          name: Set Game
+          name: Package
           command: |
             cd modules/set-game
             mvn clean package
 
-  example-opennlp:
+  Example Opennlp:
     docker:
       - image: cimg/openjdk:16.0
     steps:
       # Checkout the code as the first step.
       - checkout
       - run:
-          name: Opennlp
+          name: Package
           command: |
             cd modules/example-opennlp
             mvn clean package
 
-  tree-traversal:
+  Tree Traversal:
     docker:
       - image: cimg/openjdk:16.0
     steps:
       # Checkout the code as the first step.
       - checkout
       - run:
-          name: Tree Traversal
+          name: Package
           command: |
             cd modules/tree-traversal
             mvn clean package
 
-  browser:
+  Browser:
     docker:
       - image: cimg/openjdk:16.0
     steps:
       # Checkout the code as the first step.
       - checkout
       - run:
-          name: Browser
+          name: Package
           command: |
             cd modules/browser
             mvn clean package
@@ -60,7 +60,7 @@ workflows:
   # For more details on extending your workflow, see the configuration docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
   sample: 
     jobs:
-      - set-game
-      - example-opennlp
-      - tree-traversal
-      - browser
+      - Set Game
+      - Example Opennlp
+      - Tree Traversal
+      - Browser
