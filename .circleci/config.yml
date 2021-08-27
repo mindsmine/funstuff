@@ -18,27 +18,25 @@ jobs:
     executor: default-executor
     steps:
       - checkout
-      - run: |
-          cd modules/example-opennlp
-          mvn clean package
+      - run:
+          working_directory: modules/example-opennlp
+          command: mvn clean package
 
   Tree Traversal:
     executor: default-executor
     steps:
       - checkout
-      - run: |
-          cd modules/tree-traversal
-          mvn clean package
+      - run:
+          working_directory: modules/tree-traversal
+          command: mvn clean package
 
   Browser:
     executor: default-executor
     steps:
       - checkout
-      - run: |
-          cd modules/browser
-          mvn clean package
-
-
+      - run:
+          working_directory: modules/browser
+          command: mvn clean package
 
 workflows:
   # Below is the definition of your workflow.
