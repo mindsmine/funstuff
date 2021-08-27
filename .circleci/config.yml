@@ -2,10 +2,14 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
-jobs:
-  Set Game:
+executors:
+  default-executor:
     docker:
       - image: cimg/openjdk:16.0
+
+jobs:
+  Set Game:
+    executor: default-executor
     steps:
       # Checkout the code as the first step.
       - checkout
@@ -16,8 +20,7 @@ jobs:
             mvn clean package
 
   Concordance:
-    docker:
-      - image: cimg/openjdk:16.0
+    executor: default-executor
     steps:
       # Checkout the code as the first step.
       - checkout
@@ -28,8 +31,7 @@ jobs:
             mvn clean package
 
   Tree Traversal:
-    docker:
-      - image: cimg/openjdk:16.0
+    executor: default-executor
     steps:
       # Checkout the code as the first step.
       - checkout
@@ -40,8 +42,7 @@ jobs:
             mvn clean package
 
   Browser:
-    docker:
-      - image: cimg/openjdk:16.0
+    executor: default-executor
     steps:
       # Checkout the code as the first step.
       - checkout
