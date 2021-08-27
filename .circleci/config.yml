@@ -1,15 +1,14 @@
 version: 2.1
 
 executors:
-  default-executor:
+  reusable-executor:
     docker:
       - image: cimg/openjdk:16.0
 
 jobs:
   reusable-job:
     description: "Reusable Job which takes working directory as a parameter"
-    docker:
-      - image: cimg/openjdk:16.0
+    executor: reusable-executor
     parameters:
       wd:
         description: "To pass in the working directory"
@@ -19,38 +18,6 @@ jobs:
       - run:
           working_directory: << parameters.wd >>
           command: mvn clean package
-    
-  Set Game:
-    executor: default-executor
-    steps:
-      - checkout
-      - run:
-          working_directory: modules/set-game
-          command: mvn clean package
-
-  Concordance:
-    executor: default-executor
-    steps:
-      - checkout
-      - run:
-          working_directory: modules/example-opennlp
-          command: mvn clean package
-
-  Tree Traversal:
-    executor: default-executor
-    steps:
-      - checkout
-      - run:
-          working_directory: modules/tree-traversal
-          command: mvn clean package
-
-  Browser:
-    executor: default-executor
-    steps:
-      - checkout
-      - run:
-          working_directory: modules/browser
-          command: mvn clean package
 
 workflows:
   default: 
@@ -58,6 +25,12 @@ workflows:
       - reusable-job:
           name: Concordance
           wd: modules/example-opennlp
-      - Set Game
-      - Tree Traversal
-      - Browser
+      - reusable-job:
+          name: Set Game
+          wd: modules/set-game
+      - reusable-job:
+          name: Tree Traversal
+          wd: modules/tree-traversal
+      - reusable-job:
+          name: Browser
+          wd: modules/browser
