@@ -122,10 +122,10 @@ limitations under the License.
                             <configuration>
                                 <rules>
                                     <requireMavenVersion>
-                                        <version>(,3.6.3]</version>
+                                        <version>[3.8,)</version>
                                     </requireMavenVersion>
                                     <requireJavaVersion>
-                                        <version>(,16)</version>
+                                        <version>[16,)</version>
                                     </requireJavaVersion>
                                 </rules>
                             </configuration>
