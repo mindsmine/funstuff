@@ -1,6 +1,6 @@
 language: java
 
-# install: true
+install: true
 
 before_install:
   - echo "Downloading Maven"
