@@ -10,9 +10,9 @@ jobs:
     executor: default-executor
     steps:
       - checkout
-      - run: |
-          cd modules/set-game
-          mvn clean package
+      - run:
+          working_directory: modules/set-game
+          command: mvn clean package
 
   Concordance:
     executor: default-executor
