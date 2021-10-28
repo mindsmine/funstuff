@@ -189,6 +189,7 @@ limitations under the License.
                                 <echo/>
                                 <mkdir dir="${build.source.code}"/>
                                 <mkdir dir="${build.source.compiled}"/>
+                                <mkdir dir="${build.source.lib}"/>
                                 <mkdir dir="${build.test.code}"/>
                                 <mkdir dir="${build.test.compiled}"/>
                                 <mkdir dir="${build.test.lib}"/>
