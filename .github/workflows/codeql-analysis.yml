@@ -40,6 +40,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    # Installs Java for building code.
+    - name: Installing Java
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'zulu'
+        java-version: '17'
+
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v1
@@ -65,13 +72,24 @@ jobs:
     #- run: |
     #   make bootstrap
     #   make release
-    - run: |
+
+    - name: Build set-game
+      run: |
         cd ${GITHUB_WORKSPACE}/modules/set-game
         mvn clean package
+
+    - name: Build example-opennlp
+      run: |
         cd ${GITHUB_WORKSPACE}/modules/example-opennlp
         mvn clean package
+
+    - name: Build tree-traversal
+      run: |
         cd ${GITHUB_WORKSPACE}/modules/tree-traversal
         mvn clean package
+
+    - name: Build browser
+      run: |
         cd ${GITHUB_WORKSPACE}/modules/browser
         mvn clean package
 
