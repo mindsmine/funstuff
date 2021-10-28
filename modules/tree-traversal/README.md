@@ -19,7 +19,7 @@ described for a binary tree, but they may be generalized to other trees as well.
 
 **Command Line Interface**: After packaging the `jar` file, run the command line, as follows:
 ```bash
-$ java -jar dist/mindsmine-tree-traversal-1.1.1.jar
+$ java -jar dist/mindsmine-tree-traversal-1.1.2.jar
 ```
 
 ---

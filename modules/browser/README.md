@@ -19,7 +19,7 @@ particular website, the browser retrieves the necessary content from a web serve
 on-screen instructions.
 * **Command Line Interface**: After packaging the `jar` file, pass the necessary files via the command line, as follows:
 ```bash
-$ java -jar dist/mindsmine-browser-1.0.0.jar
+$ java -jar dist/mindsmine-browser-1.0.1.jar
 ```
 
 ---

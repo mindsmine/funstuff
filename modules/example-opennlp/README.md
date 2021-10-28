@@ -45,7 +45,7 @@ Two files are needed to run the application:
 on-screen instructions.
 * **Command Line Interface**: After packaging the `jar` file, pass the necessary files via the command line, as follows:
 ```bash
-$ java -jar dist/mindsmine-exampleOpenNLP-1.0.5.jar example/en-sent.bin example/en-input.txt
+$ java -jar dist/mindsmine-exampleOpenNLP-1.0.6.jar example/en-sent.bin example/en-input.txt
 ```
 
 ---
