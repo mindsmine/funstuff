@@ -26,6 +26,9 @@ $ java -jar dist/mindsmine-browser-1.0.0.jar
 
 ## Releases ##
 
+**1.0.1**
+* Java 17 compliant
+
 **1.0.0**
 * Basic functionality for browser
 * Java 15 compliant
