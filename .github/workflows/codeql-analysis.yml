@@ -73,22 +73,25 @@ jobs:
     #   make bootstrap
     #   make release
 
-    - name: Build set-game
-      run: |
-        cd ${GITHUB_WORKSPACE}/modules/set-game
-        mvn clean package
+    - name: Set Game
+      working-directory: modules/set-game
+      run: mvn clean package
 
-    - name: Build example-opennlp
+      # run: |
+      #   cd ${GITHUB_WORKSPACE}/modules/set-game
+      #   mvn clean package
+
+    - name: Concordance
       run: |
         cd ${GITHUB_WORKSPACE}/modules/example-opennlp
         mvn clean package
 
-    - name: Build tree-traversal
+    - name: Tree Traversal
       run: |
         cd ${GITHUB_WORKSPACE}/modules/tree-traversal
         mvn clean package
 
-    - name: Build browser
+    - name: Browser
       run: |
         cd ${GITHUB_WORKSPACE}/modules/browser
         mvn clean package
