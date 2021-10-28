@@ -77,24 +77,17 @@ jobs:
       working-directory: modules/set-game
       run: mvn clean package
 
-      # run: |
-      #   cd ${GITHUB_WORKSPACE}/modules/set-game
-      #   mvn clean package
-
     - name: Concordance
-      run: |
-        cd ${GITHUB_WORKSPACE}/modules/example-opennlp
-        mvn clean package
+      working-directory: modules/example-opennlp
+      run: mvn clean package
 
     - name: Tree Traversal
-      run: |
-        cd ${GITHUB_WORKSPACE}/modules/tree-traversal
-        mvn clean package
+      working-directory: modules/tree-traversal
+      run: mvn clean package
 
     - name: Browser
-      run: |
-        cd ${GITHUB_WORKSPACE}/modules/browser
-        mvn clean package
+      working-directory: modules/browser
+      run: mvn clean package
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
