@@ -52,6 +52,10 @@ $ java -jar dist/mindsmine-exampleOpenNLP-1.0.5.jar example/en-sent.bin example/
 
 ## Releases ##
 
+**1.0.6**
+* Updated dependency to grab from CDN instead of local copy
+* Java 17 compliant 
+
 **1.0.5**
 * Added dependency to `mindsmine-jems-4.0.0` and removed unnecessary code
 

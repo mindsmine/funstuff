@@ -70,6 +70,7 @@ limitations under the License.
         <!-- Dependency Versions -->
         <dependency.version.junit>4.13.2</dependency.version.junit>
         <dependency.version.opennlp.tools>1.9.2</dependency.version.opennlp.tools>
+        <dependency.version.mindsmine>4.0.0</dependency.version.mindsmine>
 
         <!-- Environment Properties -->
         <maven.build.timestamp.format>yyyyMMdd.HHmmss</maven.build.timestamp.format>
@@ -96,6 +97,8 @@ limitations under the License.
         <build.test.compiled>${path.to.build}/test/compiled</build.test.compiled>
         <build.test.lib>${path.to.build}/test/lib</build.test.lib>
         <build.test.reports>${path.to.build}/test/reports</build.test.reports>
+
+        <lib.mindsmine>https://cdn.shaiksphere.com/mindsmine-jems-${dependency.version.mindsmine}.jar</lib.mindsmine>
 
         <output.code>${path.to.dist}</output.code>
         <output.file>${project.organization.name}-${project.artifactId}-${project.version}.jar</output.file>

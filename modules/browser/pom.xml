@@ -64,10 +64,7 @@ limitations under the License.
                         </goals>
                         <configuration>
                             <target>
-                                <!-- <copy todir="${build.source.lib}">
-                                    <fileset dir="${path.to.lib}" includes="*.jar"/>
-                                </copy> -->
-                                <get src="https://cdn.shaiksphere.com/mindsmine-jems-4.0.0.jar"
+                                <get src="${lib.mindsmine}"
                                      dest="${build.source.lib}"/>
                             </target>
                         </configuration>
