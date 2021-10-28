@@ -26,6 +26,10 @@ $ java -jar dist/mindsmine-tree-traversal-1.1.1.jar
 
 ### Releases ###
 
+**1.1.2**
+* Java 17 compliant
+* Maven 3.8.3 compliant
+
 **1.1.1**
 * Java 14 compliant
 * Maven 3.6.3 compliant

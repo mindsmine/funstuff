@@ -25,6 +25,10 @@ $ java -jar dist/mindsmine-set-game-1.0.4.jar
 
 ### Releases ###
 
+**1.0.5**
+* Java 17 compliant
+* Maven 3.8.3 compliant
+
 **1.0.4**
 * Java 14 compliant
 * Maven 3.6.3 compliant

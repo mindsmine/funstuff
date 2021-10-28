@@ -28,6 +28,7 @@ $ java -jar dist/mindsmine-browser-1.0.0.jar
 
 **1.0.1**
 * Java 17 compliant
+* Maven 3.6.3 compliant
 
 **1.0.0**
 * Basic functionality for browser
