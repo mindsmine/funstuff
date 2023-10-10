@@ -10,15 +10,13 @@
 # supported CodeQL languages.
 #
 
-name: "CodeQL"
+name: "Build"
 
-on:
-  push:
-    branches: [main]
+on: [push]
 
 jobs:
   analyze:
-    name: Analyze
+    name: 'Analyse and Build'
 
     runs-on: ubuntu-latest
 
@@ -52,17 +50,17 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
-      with:
-        languages: 'java'
-
     - name: Set up JDK
       uses: actions/setup-java@v3
       with:
         java-version: '20'
         distribution: 'temurin'
         cache: maven
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: 'java'
 
     - name: Build '${{ matrix.module.name }}' with Maven
       working-directory: modules/${{ matrix.module.path }}
