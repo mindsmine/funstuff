@@ -1,6 +1,6 @@
 # funstuff #
 
-[![CodeQL](https://github.com/mindsmine/funstuff/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/mindsmine/funstuff/actions/workflows/codeql-analysis.yml)
+[![Build](https://github.com/mindsmine/funstuff/actions/workflows/build.yml/badge.svg)](https://github.com/mindsmine/funstuff/actions/workflows/build.yml)
 
 Collection of fun examples gathered over time.
 

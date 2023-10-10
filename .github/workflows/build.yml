@@ -1,0 +1,45 @@
+name: "Build"
+
+on: [ push, pull_request]
+
+jobs:
+  build:
+    name: 'Build'
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        module: [
+          {
+            name: 'Concordance',
+            path: 'example-opennlp'
+          },
+          {
+            name: 'Set Game',
+            path: 'set-game'
+          },
+          {
+            name: 'Tree Traversal',
+            path: 'tree-traversal'
+          },
+          {
+            name: 'Browser',
+            path: 'browser'
+          }
+        ]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '20'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Package '${{ matrix.module.name }}' with Maven
+      working-directory: modules/${{ matrix.module.path }}
+      run: mvn clean package
