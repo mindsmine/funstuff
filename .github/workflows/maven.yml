@@ -14,9 +14,24 @@ jobs:
   build:
     strategy:
       matrix:
-        wd: [modules/example-opennlp, modules/set-game, modules/tree-traversal, modules/browser]
-
-    # uses: ./.github/workflows/reuse-maven.yml
+        module: [
+          {
+            name: 'Concordance',
+            wd: 'modules/example-opennlp'
+          },
+          {
+            name: 'Set Game',
+            wd: 'modules/set-game'
+          },
+          {
+            name: 'Tree Traversal',
+            wd: 'modules/tree-traversal'
+          },
+          {
+            name: 'Browser',
+            wd: 'modules/browser'
+          }
+        ]
 
     runs-on: ubuntu-latest
 
@@ -31,6 +46,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Build ${{ matrix.name }} with Maven
-      working-directory: ${{ matrix.wd }}
+    - name: Build '${{ matrix.module.name }}' with Maven
+      working-directory: ${{ matrix.module.wd }}
       run: mvn clean package
