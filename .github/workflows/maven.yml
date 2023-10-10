@@ -17,19 +17,19 @@ jobs:
         module: [
           {
             name: 'Concordance',
-            wd: 'modules/example-opennlp'
+            path: 'example-opennlp'
           },
           {
             name: 'Set Game',
-            wd: 'modules/set-game'
+            path: 'set-game'
           },
           {
             name: 'Tree Traversal',
-            wd: 'modules/tree-traversal'
+            path: 'tree-traversal'
           },
           {
             name: 'Browser',
-            wd: 'modules/browser'
+            path: 'browser'
           }
         ]
 
@@ -47,5 +47,5 @@ jobs:
         cache: maven
 
     - name: Build '${{ matrix.module.name }}' with Maven
-      working-directory: ${{ matrix.module.wd }}
+      working-directory: modules/${{ matrix.module.path }}
       run: mvn clean package
