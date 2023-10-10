@@ -16,7 +16,7 @@ on: [push]
 
 jobs:
   analyze:
-    name: 'Analyse and Build'
+    name: 'Build and Analyse'
 
     runs-on: ubuntu-latest
 

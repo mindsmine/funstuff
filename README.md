@@ -1,7 +1,5 @@
 # funstuff #
 
-[![Maven](https://github.com/mindsmine/funstuff/actions/workflows/maven.yml/badge.svg)](https://github.com/mindsmine/funstuff/actions/workflows/maven.yml)
-
 [![CodeQL](https://github.com/mindsmine/funstuff/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/mindsmine/funstuff/actions/workflows/codeql-analysis.yml)
 
 Collection of fun examples gathered over time.
