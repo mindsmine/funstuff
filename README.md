@@ -1,8 +1,8 @@
 # funstuff #
 
-[![Build Status](https://circleci.com/gh/mindsmine/funstuff.svg?style=shield)](https://circleci.com/gh/mindsmine/funstuff)
+[![Maven](https://github.com/mindsmine/funstuff/actions/workflows/maven.yml/badge.svg)](https://github.com/mindsmine/funstuff/actions/workflows/maven.yml)
 
-[![Build Status](https://api.travis-ci.com/mindsmine/funstuff.svg?branch=main)](https://app.travis-ci.com/github/mindsmine/funstuff)
+[![CodeQL](https://github.com/mindsmine/funstuff/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/mindsmine/funstuff/actions/workflows/codeql-analysis.yml)
 
 Collection of fun examples gathered over time.
 
