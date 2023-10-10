@@ -19,21 +19,54 @@ on:
 jobs:
   analyze:
     name: Analyze
+
     runs-on: ubuntu-latest
+
     permissions:
       actions: read
       contents: read
       security-events: write
 
+    strategy:
+      matrix:
+        module: [
+          {
+            name: 'Concordance',
+            path: 'example-opennlp'
+          },
+          {
+            name: 'Set Game',
+            path: 'set-game'
+          },
+          {
+            name: 'Tree Traversal',
+            path: 'tree-traversal'
+          },
+          {
+            name: 'Browser',
+            path: 'browser'
+          }
+        ]
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
-        languages: java
+        languages: 'java'
+
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '20'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Build '${{ matrix.module.name }}' with Maven
+      working-directory: modules/${{ matrix.module.path }}
+      run: mvn clean package
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
