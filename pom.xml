@@ -121,6 +121,7 @@ limitations under the License.
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <!-- Source: https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-enforcer-plugin -->
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
                     <version>3.6.2</version>
