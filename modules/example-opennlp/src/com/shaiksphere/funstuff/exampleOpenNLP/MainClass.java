@@ -85,7 +85,7 @@ public final class MainClass {
 
             try {
                 binaryFile = SwingHelper.pickFile(
-                        "Pick the language specific training file (e.g., en-sent.bin file)",
+                        "Pick the language specific training file (e.g., .bin file)",
                         SwingHelper.BIN_EXTENSION_FILTER
                 ).get();
 
@@ -167,8 +167,8 @@ public final class MainClass {
             File binaryFile = new File(binaryFilepath);
             File inputFile = new File(inputFilepath);
 
-            if (!binaryFile.isFile() || !binaryFile.getName().endsWith("sent.bin")) {
-                throw new IllegalArgumentException("Only non-empty <lang>-sent.bin file is allowed.");
+            if (!binaryFile.isFile() || !binaryFile.getName().endsWith(".bin")) {
+                throw new IllegalArgumentException("Only non-empty \'bin\' file is allowed.");
             }
 
             if (!inputFile.isFile() || !inputFile.getName().endsWith(".txt")) {

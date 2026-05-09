@@ -10,8 +10,8 @@ learning. OpenNLP needs pre-trained models to work.
 
 The models are language dependent and only perform well if the model language matches the language of the input text.
 Also the input text needs to be decoded correctly, depending on the input file encoding this can only be done by
-explicitly specifying the character encoding. For all the pre-trained model files,
-[click here](http://opennlp.sourceforge.net/models-1.5).
+explicitly specifying the character encoding. For all the pre-trained sentence detection model files,
+[click here](https://opennlp.apache.org/models.html#sentence_detection).
 
 ## Example ##
 
@@ -32,8 +32,9 @@ consideration, which is a natural language processing (NLP) problem.
 ### Pre-Requisites ###
 
 Two files are needed to run the application:
-1. A training model file specific to the language under consideration. Download the appropriate model file from
-[here](http://opennlp.sourceforge.net/models-1.5). For English, that would be `en-sent.bin`. 
+1. A sentence detection training model file specific to the language under consideration. Download the appropriate sentence
+detection model file from [here](https://opennlp.apache.org/models.html#sentence_detection). For English, that would be
+`opennlp-en-ud-ewt-sentence-1.3-2.5.4.bin`. 
 2. A text file specific to the language under consideration. E.g., `input.txt`.
 
 **NOTE**: As an example, for English, the pre-trained model file and an example input file are available under the
@@ -45,7 +46,7 @@ Two files are needed to run the application:
 on-screen instructions.
 * **Command Line Interface**: After packaging the `jar` file, pass the necessary files via the command line, as follows:
 ```bash
-$ java -jar dist/mindsmine-exampleOpenNLP-1.0.7.jar example/en-sent.bin example/en-input.txt
+$ java -jar dist/mindsmine-exampleOpenNLP-1.0.7.jar example/opennlp-en-ud-ewt-sentence-1.3-2.5.4.bin example/en-input.txt
 ```
 
 ---

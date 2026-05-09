@@ -87,6 +87,7 @@ limitations under the License.
                                 <echo/>
                                 <copy todir="${build.source.lib}">
                                     <fileset file="${org.apache.opennlp:opennlp-tools:jar}"/>
+                                    <fileset file="${org.slf4j:slf4j-api:jar}"/>
                                 </copy>
                                 <get src="${lib.mindsmine}"
                                      dest="${build.source.lib}"/>
@@ -154,7 +155,7 @@ limitations under the License.
                             <target>
                                 <echo level="info" message="Began - Downloading 'en-sent.bin' for test class usage"/>
                                 <echo/>
-                                <get src="https://opennlp.sourceforge.net/models-1.5/en-sent.bin"
+                                <get src="https://dlcdn.apache.org/opennlp/models/ud-models-1.3/opennlp-en-ud-ewt-sentence-1.3-2.5.4.bin"
                                      dest="${build.test.compiled}/com/shaiksphere/funstuff/exampleOpenNLP/helper"/>
                                 <echo/>
                                 <echo level="info" message="Ended - Downloading 'en-sent.bin' for test class usage"/>

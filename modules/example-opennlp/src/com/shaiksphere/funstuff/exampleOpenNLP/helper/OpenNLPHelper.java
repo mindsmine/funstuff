@@ -47,7 +47,7 @@ public final class OpenNLPHelper {
      *
      */
     public static String[] getSentences(File binaryFile, String paragraph) throws IOException {
-        if (binaryFile == null || !binaryFile.isFile() || !binaryFile.getName().endsWith("sent.bin")) {
+        if (binaryFile == null || !binaryFile.isFile() || !binaryFile.getName().endsWith(".bin")) {
             throw new IllegalArgumentException("Only non-empty <lang>-sent.bin file is allowed.");
         }
 

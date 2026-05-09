@@ -33,7 +33,7 @@ public class OpenNLPHelperTest {
 
         final String sentence = "Bonus: label each word with the sentence numbers in which each occurrence appeared";
 
-        final String binaryFilepath = OpenNLPHelperTest.class.getResource("en-sent.bin").getPath();
+        final String binaryFilepath = OpenNLPHelperTest.class.getResource("opennlp-en-ud-ewt-sentence-1.3-2.5.4.bin").getPath();
 
         final File binaryFile = new File(binaryFilepath);
 
