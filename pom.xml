@@ -72,6 +72,14 @@ limitations under the License.
         <dependency.version.opennlp.tools>1.9.2</dependency.version.opennlp.tools>
         <dependency.version.mindsmine>4.0.0</dependency.version.mindsmine>
 
+        <!-- Check for latest version. URL = https://www.oracle.com/java/technologies/ -->
+        <dependency.version.java>26</dependency.version.java>
+
+        <!-- Check for latest version. URL = https://maven.apache.org/download.cgi -->
+        <dependency.version.maven>3.9</dependency.version.maven>
+
+        <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
         <!-- Environment Properties -->
         <maven.build.timestamp.format>yyyyMMdd.HHmmss</maven.build.timestamp.format>
         <build.compiler>extJavac</build.compiler>
@@ -125,10 +133,10 @@ limitations under the License.
                             <configuration>
                                 <rules>
                                     <requireMavenVersion>
-                                        <version>[3.8,)</version>
+                                        <version>[${dependency.version.maven},)</version>
                                     </requireMavenVersion>
                                     <requireJavaVersion>
-                                        <version>[20,)</version>
+                                        <version>[${dependency.version.java},)</version>
                                     </requireJavaVersion>
                                 </rules>
                             </configuration>
