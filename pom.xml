@@ -68,9 +68,15 @@ limitations under the License.
 
     <properties>
         <!-- Dependency Versions -->
+
+        <!-- Check for latest version. URL = https://mvnrepository.com/artifact/junit/junit -->
         <dependency.version.junit>4.13.2</dependency.version.junit>
-        <dependency.version.opennlp.tools>1.9.2</dependency.version.opennlp.tools>
-        <dependency.version.mindsmine>4.0.0</dependency.version.mindsmine>
+
+        <!-- Check for latest version. URL = https://mvnrepository.com/artifact/org.apache.opennlp/opennlp-tools -->
+        <dependency.version.opennlp.tools>2.5.9</dependency.version.opennlp.tools>
+
+        <!-- Check for latest version. URL = https://www.shaiksphere.com/mindsmine/jems -->
+        <dependency.version.mindsmine>4.9.0</dependency.version.mindsmine>
 
         <!-- Check for latest version. URL = https://www.oracle.com/java/technologies/ -->
         <dependency.version.java>26</dependency.version.java>
