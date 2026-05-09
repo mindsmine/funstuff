@@ -16,8 +16,6 @@ limitations under the License.
 
 package com.shaiksphere.funstuff.exampleOpenNLP.holder;
 
-import com.shaiksphere.mindsmine.jems.StringHelper;
-
 import java.io.File;
 
 /**
@@ -32,11 +30,7 @@ public final class FileDetailsHolder {
     private final String fileExtension;
 
     public FileDetailsHolder(String fileFolder, String fileName, String fileExtension) {
-        if (
-                StringHelper.isBlank(fileFolder) ||
-                StringHelper.isBlank(fileName) ||
-                StringHelper.isBlank(fileExtension)
-        ) {
+        if (fileFolder.isBlank() || fileName.isBlank() || fileExtension.isBlank()) {
             throw new IllegalArgumentException("Only non-empty string(s) are allowed as arguments.");
         }
 
