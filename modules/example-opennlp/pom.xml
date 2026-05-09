@@ -88,6 +88,7 @@ limitations under the License.
                                 <copy todir="${build.source.lib}">
                                     <fileset file="${org.apache.opennlp:opennlp-tools:jar}"/>
                                     <fileset file="${org.slf4j:slf4j-api:jar}"/>
+                                    <fileset file="${org.slf4j:slf4j-nop:jar}"/>
                                 </copy>
                                 <get src="${lib.mindsmine}"
                                      dest="${build.source.lib}"/>

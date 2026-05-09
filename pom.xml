@@ -61,6 +61,12 @@ limitations under the License.
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>${dependency.version.slf4j}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.apache.opennlp</groupId>
             <artifactId>opennlp-tools</artifactId>
             <version>${dependency.version.opennlp.tools}</version>
