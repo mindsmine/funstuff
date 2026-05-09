@@ -55,6 +55,12 @@ limitations under the License.
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${dependency.version.slf4j}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.apache.opennlp</groupId>
             <artifactId>opennlp-tools</artifactId>
             <version>${dependency.version.opennlp.tools}</version>
@@ -74,6 +80,9 @@ limitations under the License.
 
         <!-- Check for latest version. URL = https://mvnrepository.com/artifact/org.apache.opennlp/opennlp-tools -->
         <dependency.version.opennlp.tools>2.5.9</dependency.version.opennlp.tools>
+
+        <!-- Check for corresponding version. URL = https://mvnrepository.com/artifact/org.apache.opennlp/opennlp-tools -->
+        <dependency.version.slf4j>2.0.17</dependency.version.slf4j>
 
         <!-- Check for latest version. URL = https://www.shaiksphere.com/mindsmine/jems -->
         <dependency.version.mindsmine>4.9.0</dependency.version.mindsmine>
