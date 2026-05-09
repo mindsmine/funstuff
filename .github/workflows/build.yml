@@ -31,12 +31,18 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      # Check for latest version
+      # URL = https://github.com/actions/checkout
+      uses: actions/checkout@v6
 
     - name: Set up JDK
-      uses: actions/setup-java@v3
+      # Check for latest version
+      # URL = https://github.com/actions/setup-java
+      uses: actions/setup-java@v5
       with:
-        java-version: '20'
+        # Check for latest version
+        # URL = https://adoptium.net/temurin/releases
+        java-version: '26'
         distribution: 'temurin'
         cache: maven
 
