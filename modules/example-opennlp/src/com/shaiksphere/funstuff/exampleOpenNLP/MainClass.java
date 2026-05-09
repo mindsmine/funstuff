@@ -20,7 +20,6 @@ import com.shaiksphere.funstuff.exampleOpenNLP.helper.OpenNLPHelper;
 import com.shaiksphere.funstuff.exampleOpenNLP.holder.ConcordanceHolder;
 import com.shaiksphere.funstuff.exampleOpenNLP.holder.FileDetailsHolder;
 
-import com.shaiksphere.mindsmine.jems.StringHelper;
 import com.shaiksphere.mindsmine.jems.SwingHelper;
 
 import java.io.BufferedWriter;
@@ -222,7 +221,7 @@ public final class MainClass {
     private static ArrayList<String> doActualWork(File binaryFile, File inputFile) throws IOException {
         String inputFileContent = Files.readString(inputFile.toPath());
 
-        if (StringHelper.isBlank(inputFileContent)) {
+        if (inputFileContent.isBlank()) {
             throw new IOException("INVALID FILE: Input file is empty!");
         }
 
